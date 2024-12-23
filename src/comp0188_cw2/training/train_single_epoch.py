@@ -103,7 +103,7 @@ class TrainSingleEpoch:
                 train_loss = criterion(output, output_vals)
             if self.cache_preds:
                 preds.append({k:output[k].detach().cpu() for k in output.keys()})
-            losses += train_loss.detach().cpu()
+            losses = losses + train_loss.detach().cpu()
             denom += 1
             # losses.update(train_loss.data[0], g.size(0))
             # error_ratio.update(evaluation(output, target).data[0], g.size(0))
