@@ -91,7 +91,7 @@ class ValidateSingleEpoch:
 
                 # Logs
                 val_loss = criterion(output, output_vals)
-                losses += val_loss.detach().cpu()
+                losses = losses + val_loss.detach().cpu()
                 denom += 1
                 if self.cache_preds:
                     preds.append({k:output[k].detach().cpu() for k in output.keys()})
